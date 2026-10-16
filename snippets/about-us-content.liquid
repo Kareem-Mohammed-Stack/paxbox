@@ -1,0 +1,1194 @@
+{%- comment -%}
+  PaxBox About Us Page Content
+  Modern, high-converting, brand-aligned storytelling for PaxBox
+  Strict minimum font size: 16px across all text elements and viewports
+{%- endcomment -%}
+
+<link rel="stylesheet" href="{{ 'base.css' | asset_url }}">
+
+<style>
+  .paxbox-about {
+    font-family: var(--font-body-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+    color: #1f2937;
+    background-color: #ffffff;
+    padding-bottom: 5rem;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  .paxbox-about * {
+    box-sizing: border-box;
+  }
+
+  /* Universal strict minimum 16px font-size enforcement (except paragraphs explicitly set to 15px) */
+  .paxbox-about p:not(.paxbox-about-story-text p):not(.paxbox-about-section-header p),
+  .paxbox-about span,
+  .paxbox-about a,
+  .paxbox-about li,
+  .paxbox-about label,
+  .paxbox-about strong,
+  .paxbox-about em,
+  .paxbox-about small,
+  .paxbox-about button {
+    font-size: max(16px, 1rem);
+  }
+
+  /* Preserve large heading scales while guaranteeing >= 16px */
+  .paxbox-about h1 {
+    font-family: var(--font-heading-family, "Poppins", sans-serif);
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 1.25rem;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .paxbox-about h2 {
+    font-family: var(--font-heading-family, "Poppins", sans-serif);
+    font-size: clamp(1.6rem, 2.5vw, 2.25rem);
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 1.25rem;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+  }
+
+  .paxbox-about h3 {
+    font-family: var(--font-heading-family, "Poppins", sans-serif);
+    font-size: max(1.125rem, 18px);
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 0.5rem;
+  }
+
+  .paxbox-about h1 span,
+  .paxbox-about h2 span,
+  .paxbox-about h3 span {
+    font-size: inherit;
+  }
+
+  .paxbox-about-hero h1 span {
+    color: #0045ff;
+    position: relative;
+    display: inline-block;
+  }
+
+  .paxbox-about-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Breadcrumb */
+  .paxbox-about-breadcrumb {
+    padding: 1.5rem 0 0.5rem;
+    font-size: 16px;
+    color: #6b7280;
+  }
+
+  .paxbox-about-breadcrumb a {
+    color: #4b5563;
+    font-size: 16px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .paxbox-about-breadcrumb a:hover {
+    color: #0045ff;
+  }
+
+  .paxbox-about-breadcrumb span {
+    margin: 0 0.5rem;
+    color: #9ca3af;
+    font-size: 16px;
+  }
+
+  /* Hero Section */
+  .paxbox-about-hero {
+    position: relative;
+    padding: 3.5rem 0 3rem;
+    text-align: center;
+    background: radial-gradient(circle at 50% 10%, rgba(0, 69, 255, 0.06) 0%, rgba(255, 255, 255, 0) 70%);
+    border-bottom: 1px solid #f0f2f5;
+    margin-bottom: 3.5rem;
+  }
+
+  .paxbox-about-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #eef4ff;
+    color: #0045ff;
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    border: 1px solid rgba(0, 69, 255, 0.15);
+  }
+
+  .paxbox-about-badge span {
+    font-size: 16px;
+  }
+
+  .paxbox-about-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #0045ff;
+    box-shadow: 0 0 8px rgba(0, 69, 255, 0.6);
+  }
+
+  .paxbox-about-hero-lead {
+    font-size: clamp(1.0625rem, 1.8vw, 1.25rem);
+    color: #4b5563;
+    max-width: 760px;
+    margin: 0 auto 2rem;
+    font-weight: 400;
+  }
+
+  .paxbox-about-hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+
+  .paxbox-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #0045ff;
+    color: #ffffff !important;
+    padding: 0.875rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 14px rgba(0, 69, 255, 0.25);
+    border: 1px solid #0045ff;
+  }
+
+  .paxbox-btn-primary:hover {
+    background-color: #0036cc;
+    box-shadow: 0 6px 20px rgba(0, 69, 255, 0.35);
+    transform: translateY(-2px);
+  }
+
+  .paxbox-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    color: #111827 !important;
+    padding: 0.875rem 1.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    border: 1px solid #d1d5db;
+    transition: all 0.25s ease;
+  }
+
+  .paxbox-btn-secondary:hover {
+    background-color: #f9fafb;
+    border-color: #9ca3af;
+    color: #0045ff !important;
+    transform: translateY(-2px);
+  }
+
+  /* Quick highlights chips under hero */
+  .paxbox-about-highlights {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding-top: 1.5rem;
+  }
+
+  .paxbox-about-highlight-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 0.875rem 1rem;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  }
+
+  .paxbox-about-highlight-item span {
+    font-size: 16px;
+  }
+
+  .paxbox-about-highlight-item svg {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: #0045ff;
+  }
+
+  /* Story & Mission Section */
+  .paxbox-about-story {
+    margin-bottom: 4.5rem;
+  }
+
+  .paxbox-about-story-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .paxbox-about-section-eyebrow {
+    display: inline-block;
+    color: #0045ff;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .paxbox-about-section-title {
+    font-family: var(--font-heading-family, "Poppins", sans-serif);
+    font-size: clamp(1.6rem, 2.5vw, 2.25rem);
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 1.25rem;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+  }
+
+  .paxbox-about-story-text p {
+    color: #4b5563;
+    font-size: 15px !important;
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+
+  .paxbox-about-story-pillars {
+    list-style: none;
+    padding: 0;
+    margin: 1.75rem 0 0;
+  }
+
+  .paxbox-about-story-pillar {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.875rem;
+    margin-bottom: 1.125rem;
+  }
+
+  .paxbox-pillar-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #eef4ff;
+    color: #0045ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .paxbox-pillar-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .paxbox-pillar-content strong {
+    display: block;
+    color: #111827;
+    font-weight: 600;
+    font-size: 1.0625rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .paxbox-pillar-content span {
+    color: #6b7280;
+    font-size: 16px;
+  }
+
+  /* Story Visual & Stat Card */
+  .paxbox-about-stat-card {
+    background: linear-gradient(145deg, #0b1120 0%, #172554 100%);
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 20px 40px -10px rgba(0, 69, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .paxbox-about-stat-card::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle, rgba(0, 69, 255, 0.35) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .paxbox-stat-logo-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .paxbox-stat-brand-badge {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 0.4rem 0.95rem;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #93c5fd;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .paxbox-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem 1.25rem;
+  }
+
+  .paxbox-stat-item h3 {
+    font-family: var(--font-heading-family, "Poppins", sans-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 0.25rem;
+    line-height: 1;
+  }
+
+  .paxbox-stat-item p {
+    font-size: 16px;
+    color: #94a3b8;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  /* Catalog / Collections Section */
+  .paxbox-about-collections {
+    margin-bottom: 5rem;
+    background-color: #f9fafb;
+    padding: 4.5rem 0;
+    border-top: 1px solid #f3f4f6;
+    border-bottom: 1px solid #f3f4f6;
+  }
+
+  .paxbox-about-section-header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 3rem;
+  }
+
+  .paxbox-about-section-header p {
+    color: #6b7280;
+    font-size: 15px !important;
+    margin: 0.5rem 0 0;
+  }
+
+  .paxbox-catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .paxbox-catalog-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  }
+
+  .paxbox-catalog-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 24px -6px rgba(0, 69, 255, 0.12);
+    border-color: #93c5fd;
+  }
+
+  .paxbox-catalog-card-image {
+    position: relative;
+    width: 100%;
+    padding-top: 60%;
+    overflow: hidden;
+    background-color: #f3f4f6;
+  }
+
+  .paxbox-catalog-card-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .paxbox-catalog-card:hover .paxbox-catalog-card-image img {
+    transform: scale(1.05);
+  }
+
+  .paxbox-catalog-card-tag {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    background: rgba(17, 24, 39, 0.85);
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+  }
+
+  .paxbox-catalog-card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .paxbox-catalog-card-content h3 {
+    font-family: var(--font-heading-family, "Poppins", sans-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .paxbox-catalog-card-content p {
+    color: #6b7280;
+    font-size: 16px;
+    margin: 0 0 1.25rem;
+    line-height: 1.5;
+    flex-grow: 1;
+  }
+
+  .paxbox-catalog-card-link {
+    color: #0045ff;
+    font-size: 16px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .paxbox-catalog-card:hover .paxbox-catalog-card-link svg {
+    transform: translateX(4px);
+  }
+
+  .paxbox-catalog-card-link svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+  }
+
+  .paxbox-catalog-footer {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  /* Guarantees / Core Promises Section */
+  .paxbox-about-guarantees {
+    margin-bottom: 5rem;
+  }
+
+  .paxbox-guarantees-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .paxbox-guarantee-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .paxbox-guarantee-card:hover {
+    border-color: #0045ff;
+    box-shadow: 0 12px 24px -4px rgba(0, 69, 255, 0.08);
+    transform: translateY(-4px);
+  }
+
+  .paxbox-guarantee-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background-color: #eef4ff;
+    color: #0045ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .paxbox-guarantee-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .paxbox-guarantee-card h3 {
+    font-family: var(--font-heading-family, "Poppins", sans-serif);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 0.5rem;
+  }
+
+  .paxbox-guarantee-card p {
+    color: #6b7280;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 0 1rem;
+    flex-grow: 1;
+  }
+
+  .paxbox-guarantee-card a {
+    color: #0045ff;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .paxbox-guarantee-card a:hover {
+    text-decoration: underline;
+  }
+
+  /* Product Guides Banner */
+  .paxbox-about-guides {
+    margin-bottom: 5rem;
+  }
+
+  .paxbox-guides-banner {
+    background: linear-gradient(135deg, #f0f7ff 0%, #e0edff 100%);
+    border: 1px solid #bfdbfe;
+    border-radius: 20px;
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .paxbox-guides-info {
+    max-width: 650px;
+  }
+
+  .paxbox-guides-info h2 {
+    font-family: var(--font-heading-family, "Poppins", sans-serif);
+    font-size: clamp(1.5rem, 2.2vw, 2rem);
+    font-weight: 700;
+    color: #1e3a8a;
+    margin: 0.5rem 0 0.75rem;
+    line-height: 1.25;
+  }
+
+  .paxbox-guides-info p {
+    color: #334155;
+    font-size: 1.0625rem;
+    margin: 0;
+  }
+
+  /* Contact & Support Section */
+  .paxbox-about-contact {
+    margin-bottom: 2rem;
+  }
+
+  .paxbox-contact-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 3.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .paxbox-contact-card h2 {
+    font-family: var(--font-heading-family, "Poppins", sans-serif);
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 0.75rem;
+  }
+
+  .paxbox-contact-card p {
+    color: #6b7280;
+    font-size: 1.0625rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+  }
+
+  .paxbox-contact-methods {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .paxbox-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 16px;
+    color: #374151;
+  }
+
+  .paxbox-contact-item span,
+  .paxbox-contact-item a {
+    font-size: 16px;
+  }
+
+  .paxbox-contact-item svg {
+    width: 22px;
+    height: 22px;
+    color: #0045ff;
+    flex-shrink: 0;
+  }
+
+  .paxbox-contact-item a {
+    color: #0045ff;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .paxbox-contact-item a:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive styles */
+  @media screen and (max-width: 1024px) {
+    .paxbox-about-highlights {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .paxbox-catalog-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .paxbox-guarantees-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .paxbox-guides-banner {
+      flex-direction: column;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .paxbox-guides-info {
+      max-width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .paxbox-about-hero {
+      padding: 2.5rem 0 2rem;
+    }
+
+    .paxbox-about-story-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .paxbox-catalog-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .paxbox-guarantees-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .paxbox-about-highlights {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .paxbox-about-highlight-item {
+      justify-content: flex-start;
+      padding: 0.85rem 1rem;
+    }
+
+    .paxbox-about-collections {
+      padding: 3rem 0;
+    }
+
+    .paxbox-contact-card {
+      padding: 2.5rem 1.25rem;
+    }
+
+    .paxbox-contact-methods {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+  }
+</style>
+
+<div class="paxbox-about">
+  <!-- Breadcrumb -->
+  <div class="paxbox-about-container">
+    <nav class="paxbox-about-breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}">Home</a>
+      <span>/</span>
+      <span aria-current="page">About Us</span>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="paxbox-about-hero">
+    <div class="paxbox-about-container">
+      <div class="paxbox-about-badge">
+        <span class="paxbox-about-badge-dot"></span>
+        <span>The PaxBox Story</span>
+      </div>
+
+      <h1>Thoughtfully Curated for <span>Everyday Living.</span></h1>
+
+      <p class="paxbox-about-hero-lead">
+        PaxBox brings together practical, high-performance, and innovative essentials that enhance your lifestyle — vetted for quality and delivered straight to your door with speed, care, and reliability.
+      </p>
+
+      <div class="paxbox-about-hero-actions">
+        <a href="{{ routes.collections_url }}" class="paxbox-btn-primary">
+          Explore Our Collections
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <a href="/pages/contact" class="paxbox-btn-secondary">
+          Contact Support
+        </a>
+      </div>
+
+      <!-- Quick Trust Chips -->
+      <div class="paxbox-about-highlights">
+        <div class="paxbox-about-highlight-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="1" y="3" width="15" height="13"></rect>
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+          </svg>
+          <span>Around 14 Days Delivery</span>
+        </div>
+
+        <div class="paxbox-about-highlight-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path>
+          </svg>
+          <span>14-Day Return Guarantee</span>
+        </div>
+
+        <div class="paxbox-about-highlight-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <span>Shopify Secure Checkout</span>
+        </div>
+
+        <div class="paxbox-about-highlight-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>Dedicated Human Support</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand Story & Mission Section -->
+  <section class="paxbox-about-story">
+    <div class="paxbox-about-container">
+      <div class="paxbox-about-story-grid">
+        <div class="paxbox-about-story-text">
+          <span class="paxbox-about-section-eyebrow">Who We Are</span>
+          <h2 class="paxbox-about-section-title">Simplifying your daily routine with products that actually deliver.</h2>
+          <p>
+            At PaxBox, we believe online shopping should be intuitive, dependable, and enjoyable. Too often, finding reliable everyday items means sifting through endless low-grade listings with inconsistent quality and uncertain shipping times.
+          </p>
+          <p>
+            We created PaxBox to solve that exact problem. Our team hand-picks and rigorously tests products across smart electronics, wellness tech, home convenience, beauty, and family essentials. Each item must meet strict standards of build quality, practicality, and real-world value before joining our catalog.
+          </p>
+
+          <ul class="paxbox-about-story-pillars">
+            <li class="paxbox-about-story-pillar">
+              <div class="paxbox-pillar-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <div class="paxbox-pillar-content">
+                <strong>Quality-First Curation</strong>
+                <span>We only offer products we would proudly use in our own homes and recommend to our families.</span>
+              </div>
+            </li>
+
+            <li class="paxbox-about-story-pillar">
+              <div class="paxbox-pillar-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <div class="paxbox-pillar-content">
+                <strong>Transparent Value & Price Match</strong>
+                <span>Direct-to-consumer pricing with no artificial markups, backed by our best value guarantee.</span>
+              </div>
+            </li>
+
+            <li class="paxbox-about-story-pillar">
+              <div class="paxbox-pillar-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <div class="paxbox-pillar-content">
+                <strong>Complete Peace of Mind</strong>
+                <span>Full parcel tracking on every order and a generous 14-day hassle-free return policy.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right Side Stat Box -->
+        <div class="paxbox-about-stat-card">
+          <div class="paxbox-stat-logo-header">
+            <div>
+              {% render 'paxbox-logo', color_text: '#ffffff', color_accent: '#3b82f6', width: 140 %}
+            </div>
+            <span class="paxbox-stat-brand-badge">Official Store</span>
+          </div>
+
+          <div class="paxbox-stats-grid">
+            <div class="paxbox-stat-item">
+              <h3>10,000+</h3>
+              <p>Happy Customers</p>
+            </div>
+
+            <div class="paxbox-stat-item">
+              <h3>~14 Days</h3>
+              <p>Tracked Delivery</p>
+            </div>
+
+            <div class="paxbox-stat-item">
+              <h3>14 Days</h3>
+              <p>Hassle-Free Returns</p>
+            </div>
+
+            <div class="paxbox-stat-item">
+              <h3>24/7</h3>
+              <p>Customer Support</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Curated Categories Section -->
+  <section class="paxbox-about-collections">
+    <div class="paxbox-about-container">
+      <div class="paxbox-about-section-header">
+        <span class="paxbox-about-section-eyebrow">What We Offer</span>
+        <h2 class="paxbox-about-section-title">Organized for Fast, Effortless Shopping</h2>
+        <p>Our catalog is structured into focused collections so you can quickly discover what matters most to your life and home.</p>
+      </div>
+
+      <div class="paxbox-catalog-grid">
+        <!-- Electronics -->
+        <a href="/collections/electronics" class="paxbox-catalog-card">
+          <div class="paxbox-catalog-card-image">
+            <img src="{{ 'collection_electronics.jpg' | asset_url }}" alt="PaxBox Smart Electronics" loading="lazy">
+            <span class="paxbox-catalog-card-tag">Tech & Entertainment</span>
+          </div>
+          <div class="paxbox-catalog-card-content">
+            <h3>
+              Electronics
+              <span class="paxbox-catalog-card-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </span>
+            </h3>
+            <p>Cinema immersion TV backlighting, glowing acrylic note boards, and smart gadgets that modernize your space.</p>
+            <span class="paxbox-catalog-card-link">Browse Electronics →</span>
+          </div>
+        </a>
+
+        <!-- Health -->
+        <a href="/collections/health" class="paxbox-catalog-card">
+          <div class="paxbox-catalog-card-image">
+            <img src="{{ 'collection_health.jpg' | asset_url }}" alt="PaxBox Health and Wellness" loading="lazy">
+            <span class="paxbox-catalog-card-tag">Wellness & Relief</span>
+          </div>
+          <div class="paxbox-catalog-card-content">
+            <h3>
+              Health
+              <span class="paxbox-catalog-card-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </span>
+            </h3>
+            <p>Targeted neck massagers, hearing devices, and therapeutic tools engineered for personal comfort and relief.</p>
+            <span class="paxbox-catalog-card-link">Browse Health →</span>
+          </div>
+        </a>
+
+        <!-- Daily Essentials -->
+        <a href="/collections/daily" class="paxbox-catalog-card">
+          <div class="paxbox-catalog-card-image">
+            <img src="{{ 'collection_daily.jpg' | asset_url }}" alt="PaxBox Daily Essentials" loading="lazy">
+            <span class="paxbox-catalog-card-tag">Home & Convenience</span>
+          </div>
+          <div class="paxbox-catalog-card-content">
+            <h3>
+              Daily
+              <span class="paxbox-catalog-card-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </span>
+            </h3>
+            <p>Smart home upgrades, space heaters, and clever household tools that take friction out of your day.</p>
+            <span class="paxbox-catalog-card-link">Browse Daily →</span>
+          </div>
+        </a>
+
+        <!-- Cosmetics -->
+        <a href="/collections/cosmatics" class="paxbox-catalog-card">
+          <div class="paxbox-catalog-card-image">
+            <img src="{{ 'collection_cosmetics.jpg' | asset_url }}" alt="PaxBox Cosmetics & Personal Care" loading="lazy">
+            <span class="paxbox-catalog-card-tag">Self-Care & Beauty</span>
+          </div>
+          <div class="paxbox-catalog-card-content">
+            <h3>
+              Cosmetics
+              <span class="paxbox-catalog-card-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </span>
+            </h3>
+            <p>Premium beauty devices, personal care essentials, and skincare tools for your daily beauty ritual.</p>
+            <span class="paxbox-catalog-card-link">Browse Cosmetics →</span>
+          </div>
+        </a>
+
+        <!-- Kids -->
+        <a href="/collections/kids" class="paxbox-catalog-card">
+          <div class="paxbox-catalog-card-image">
+            <img src="{{ 'collection_kids.jpg' | asset_url }}" alt="PaxBox Kids & Family" loading="lazy">
+            <span class="paxbox-catalog-card-tag">Family & Children</span>
+          </div>
+          <div class="paxbox-catalog-card-content">
+            <h3>
+              Kids
+              <span class="paxbox-catalog-card-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </span>
+            </h3>
+            <p>Engaging, safe, and imaginative accessories designed to delight kids and support busy parents.</p>
+            <span class="paxbox-catalog-card-link">Browse Kids →</span>
+          </div>
+        </a>
+
+        <!-- Pets & Accessories -->
+        <a href="/collections/pets" class="paxbox-catalog-card">
+          <div class="paxbox-catalog-card-image">
+            <img src="{{ 'collection_pets.jpg' | asset_url }}" alt="PaxBox Pets Collection" loading="lazy">
+            <span class="paxbox-catalog-card-tag">Pets & Extras</span>
+          </div>
+          <div class="paxbox-catalog-card-content">
+            <h3>
+              Pets
+              <span class="paxbox-catalog-card-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </span>
+            </h3>
+            <p>Helpful gear, comfort items, and grooming solutions tailored for the wellness of your furry companions.</p>
+            <span class="paxbox-catalog-card-link">Browse Pets →</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="paxbox-catalog-footer">
+        <a href="{{ routes.collections_url }}" class="paxbox-btn-secondary">
+          View All 9 Collections
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 6px;">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Promise to You / Guarantees -->
+  <section class="paxbox-about-guarantees">
+    <div class="paxbox-about-container">
+      <div class="paxbox-about-section-header">
+        <span class="paxbox-about-section-eyebrow">The PaxBox Standard</span>
+        <h2 class="paxbox-about-section-title">Our Promise to You</h2>
+        <p>We hold our store to the highest customer service benchmarks. Here is what you can always rely on when ordering from PaxBox:</p>
+      </div>
+
+      <div class="paxbox-guarantees-grid">
+        <!-- 1 -->
+        <div class="paxbox-guarantee-card">
+          <div class="paxbox-guarantee-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+          </div>
+          <h3>Reliable, Tracked Delivery</h3>
+          <p>Orders are dispatched swiftly and arrive within around 14 days. Every shipment includes full tracking right to your doorstep.</p>
+          <a href="/policies/shipping-policy">Read Shipping Policy →</a>
+        </div>
+
+        <!-- 2 -->
+        <div class="paxbox-guarantee-card">
+          <div class="paxbox-guarantee-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+              <path d="M3 3v5h5"></path>
+            </svg>
+          </div>
+          <h3>14-Day Returns & Refunds</h3>
+          <p>If an item doesn't meet your expectations, request a return or refund within 14 days of delivery. 100% hassle-free.</p>
+          <a href="/policies/refund-policy">Read Refund Policy →</a>
+        </div>
+
+        <!-- 3 -->
+        <div class="paxbox-guarantee-card">
+          <div class="paxbox-guarantee-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <h3>Shopify Secure Checkout</h3>
+          <p>Your payment data is protected by industry-standard 256-bit encryption. We accept Apple Pay, Google Pay, Shop Pay, PayPal, and major credit cards.</p>
+          <a href="/collections/all">Shop with Confidence →</a>
+        </div>
+
+        <!-- 4 -->
+        <div class="paxbox-guarantee-card">
+          <div class="paxbox-guarantee-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+          </div>
+          <h3>Real Human Support</h3>
+          <p>Have questions before or after buying? Our dedicated support team reads and answers every inquiry personally.</p>
+          <a href="/pages/contact">Contact Our Team →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Helpful Product Guides Banner -->
+  <section class="paxbox-about-guides">
+    <div class="paxbox-about-container">
+      <div class="paxbox-guides-banner">
+        <div class="paxbox-guides-info">
+          <span class="paxbox-about-section-eyebrow" style="color: #0045ff;">Resources & Advice</span>
+          <h2>Helpful Guides for Every Purchase</h2>
+          <p>
+            We don't just supply products — we publish practical buying guides, setup tutorials, and care tips so you can make informed decisions and get the maximum benefit from every item.
+          </p>
+        </div>
+        <div>
+          <a href="/blogs/product-guides" class="paxbox-btn-primary" style="white-space: nowrap;">
+            Visit Product Guides
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get in Touch CTA -->
+  <section class="paxbox-about-contact">
+    <div class="paxbox-about-container">
+      <div class="paxbox-contact-card">
+        <span class="paxbox-about-badge">
+          <span>We're Here For You</span>
+        </span>
+        <h2>Need Help or Have a Question?</h2>
+        <p>Whether you're inquiring about product specifications, order tracking, or recommendations, our customer care team is delighted to help.</p>
+
+        <div class="paxbox-contact-methods">
+          <div class="paxbox-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>Email us: <a href="mailto:Paxboxs.ramy@gmail.com">Paxboxs.ramy@gmail.com</a></span>
+          </div>
+
+          <div class="paxbox-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>Fast response: Usually within a few hours</span>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+          <a href="/pages/contact" class="paxbox-btn-primary">
+            Visit Our Contact Page
+          </a>
+          <a href="{{ routes.collections_url }}" class="paxbox-btn-secondary">
+            Continue Shopping
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

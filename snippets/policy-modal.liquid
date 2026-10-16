@@ -1,0 +1,569 @@
+{% comment %}
+  Pax Boxs - Interactive Store Policies Modal
+  Provides immediate, comprehensive access to Shipping, Refund, Terms, and Privacy policies.
+  Eliminates 404 dead-ends and keeps visitors on-site with high-converting legal clarity.
+{% endcomment %}
+
+<div id="paxbox-policy-modal" class="paxbox-policy-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="policy-modal-title">
+  <div class="paxbox-policy-backdrop" data-policy-close></div>
+  <div class="paxbox-policy-dialog">
+    <div class="paxbox-policy-header">
+      <div class="paxbox-policy-title-wrap">
+        <span class="paxbox-policy-badge">LEGAL & PROTECTION</span>
+        <h2 id="policy-modal-title" class="paxbox-policy-title">Store Policies</h2>
+      </div>
+      <button type="button" class="paxbox-policy-close" data-policy-close aria-label="Close policies modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="paxbox-policy-tabs" role="tablist">
+      <button type="button" class="paxbox-policy-tab active" data-tab="shipping" role="tab" aria-selected="true" aria-controls="pane-shipping">
+        <span class="tab-icon">📦</span> Shipping Policy
+      </button>
+      <button type="button" class="paxbox-policy-tab" data-tab="refund" role="tab" aria-selected="false" aria-controls="pane-refund">
+        <span class="tab-icon">🔄</span> Refund & Returns
+      </button>
+      <button type="button" class="paxbox-policy-tab" data-tab="terms" role="tab" aria-selected="false" aria-controls="pane-terms">
+        <span class="tab-icon">📋</span> Terms of Service
+      </button>
+      <button type="button" class="paxbox-policy-tab" data-tab="privacy" role="tab" aria-selected="false" aria-controls="pane-privacy">
+        <span class="tab-icon">🔒</span> Privacy Policy
+      </button>
+    </div>
+
+    <!-- Tab Contents -->
+    <div class="paxbox-policy-body">
+      <!-- Shipping Policy -->
+      <div id="pane-shipping" class="paxbox-policy-pane active" role="tabpanel">
+        <div class="policy-hero-banner">
+          <span class="hero-icon">✈️</span>
+          <div>
+            <h3>Free Tracked Worldwide Shipping</h3>
+            <p>We provide fast, reliable, and insured shipping straight to your doorstep.</p>
+          </div>
+        </div>
+
+        <h4>1. Delivery Time</h4>
+        <p>Standard tracked delivery takes <strong>3–5 business days</strong>. When your package ships, you will receive an email with your tracking number.</p>
+
+        <h4>2. Tracking Your Order</h4>
+        <p>Every single order placed on Pax Boxs comes with 100% end-to-end tracking. You can check your delivery status at any time using our online order lookup tool or through the direct tracking link sent to your email.</p>
+
+        <h4>3. Damaged or Lost Shipments</h4>
+        <p>All shipments are fully insured. If your package arrives damaged or is lost in transit, please contact our 24/7 customer care team at <a href="mailto:Paxboxs.ramy@gmail.com">Paxboxs.ramy@gmail.com</a> with your order number, and we will dispatch a free replacement immediately.</p>
+      </div>
+
+      <!-- Refund & Returns Policy -->
+      <div id="pane-refund" class="paxbox-policy-pane" role="tabpanel">
+        <div class="policy-hero-banner">
+          <span class="hero-icon">🛡️</span>
+          <div>
+            <h3>14-Day Money-Back Guarantee</h3>
+            <p>Your complete satisfaction is our highest priority. Risk-free returns with full refunds.</p>
+          </div>
+        </div>
+
+        <h4>1. 14-Day Return Window</h4>
+        <p>You have <strong>14 calendar days</strong> from the date of delivery to request a return or exchange for any product purchased on Pax Boxs.</p>
+
+        <h4>2. Eligibility Criteria</h4>
+        <ul>
+          <li>The item must be in its original packaging, unused, and in the same condition as received.</li>
+          <li>Includes all included accessories, manuals, and protective films.</li>
+          <li>Proof of purchase (order confirmation email or order number) is required.</li>
+        </ul>
+
+        <h4>3. How to Initiate a Return</h4>
+        <p>To request a return, simply contact our support team at <a href="mailto:Paxboxs.ramy@gmail.com">Paxboxs.ramy@gmail.com</a> or via our Contact Page. Our team will review your request within 24 hours and provide you with a pre-authorized return label and return address instructions.</p>
+
+        <h4>4. Refunds & Processing</h4>
+        <p>Once your returned item is received and inspected, we will notify you by email. Approved refunds are automatically credited back to your original payment method (Credit Card, PayPal, Apple Pay) within <strong>3 to 5 business days</strong>.</p>
+
+        <h4>5. Defective, Broken, or Incorrect Items</h4>
+        <p>If you receive a damaged, defective, or incorrect product, please send a quick photo/video of the issue to <a href="mailto:Paxboxs.ramy@gmail.com">Paxboxs.ramy@gmail.com</a> within 7 days. We will immediately issue a full refund or express replacement without requiring a return.</p>
+      </div>
+
+      <!-- Terms of Service -->
+      <div id="pane-terms" class="paxbox-policy-pane" role="tabpanel">
+        <div class="policy-hero-banner">
+          <span class="hero-icon">⚖️</span>
+          <div>
+            <h3>Terms of Service & Buyer Protection</h3>
+            <p>Clear, transparent, and fair terms designed to protect you every step of the way.</p>
+          </div>
+        </div>
+
+        <h4>1. Overview</h4>
+        <p>This website is operated by Pax Boxs. Throughout the site, the terms "we", "us", and "our" refer to Pax Boxs. By visiting our site and/or purchasing something from us, you engage in our "Service" and agree to be bound by the following terms and conditions.</p>
+
+        <h4>2. Accuracy of Products & Pricing</h4>
+        <p>We make every effort to display the colors, features, and specifications of our products as accurately as possible. Prices for our products are subject to change without prior notice. We reserve the right at any time to modify or discontinue the Service without notice.</p>
+
+        <h4>3. Secure Payment & Billing</h4>
+        <p>We accept major credit cards, debit cards, and authorized third-party payment gateways. You agree to provide current, complete, and accurate purchase and account information for all purchases made at our store. All payment transactions are encrypted using high-grade 256-bit SSL protocols.</p>
+
+        <h4>4. Limitation of Liability</h4>
+        <p>In no case shall Pax Boxs, our directors, officers, employees, or affiliates be liable for any injury, loss, claim, or any direct, indirect, incidental, or consequential damages resulting from the use of any products procured using the service.</p>
+
+        <h4>5. Contact Information</h4>
+        <p>Questions about the Terms of Service should be sent to us at <a href="mailto:Paxboxs.ramy@gmail.com">Paxboxs.ramy@gmail.com</a>.</p>
+      </div>
+
+      <!-- Privacy Policy -->
+      <div id="pane-privacy" class="paxbox-policy-pane" role="tabpanel">
+        <div class="policy-hero-banner">
+          <span class="hero-icon">🔐</span>
+          <div>
+            <h3>Your Privacy & Data Security</h3>
+            <p>We respect your privacy and never sell or compromise your personal information.</p>
+          </div>
+        </div>
+
+        <h4>1. Information We Collect</h4>
+        <p>When you place an order or create an account, we collect the personal information you provide, such as your name, billing address, shipping address, email address, and phone number, strictly for order fulfillment and tracking updates.</p>
+
+        <h4>2. 256-Bit SSL Bank-Grade Encryption</h4>
+        <p>Your payment information is handled through PCI-DSS compliant payment processors. We never store or have access to your full credit card number or sensitive payment credentials.</p>
+
+        <h4>3. How We Use Your Data</h4>
+        <ul>
+          <li>To fulfill, ship, and deliver your orders accurately.</li>
+          <li>To send you transactional notifications, shipping updates, and customer support replies.</li>
+          <li>To prevent fraudulent orders and ensure secure platform operations.</li>
+        </ul>
+
+        <h4>4. Third-Party Disclosures</h4>
+        <p>We never sell, rent, or trade your personal data to third parties. Data is shared exclusively with verified service partners (e.g. shipping carriers and payment processors) strictly to process your transactions.</p>
+
+        <h4>5. Contact Us</h4>
+        <p>If you have questions about this Privacy Policy or your personal data, contact us at <a href="mailto:Paxboxs.ramy@gmail.com">Paxboxs.ramy@gmail.com</a>.</p>
+
+        <div style="margin-top: 24px; padding: 14px 18px; background: rgba(0, 69, 255, 0.1); border: 1px solid rgba(0, 69, 255, 0.3); border-radius: 8px;">
+          <p style="margin: 0; font-size: 13.5px; color: #93c5fd;">
+            For complete legal text, you can also view our <a href="/policies/privacy-policy" style="color: #ffffff; text-decoration: underline; font-weight: 700;">Full Shopify Privacy Policy page →</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="paxbox-policy-footer">
+      <span class="paxbox-policy-footnote">Questions? We are here to help 24/7 at <a href="mailto:Paxboxs.ramy@gmail.com">Paxboxs.ramy@gmail.com</a></span>
+      <button type="button" class="paxbox-policy-btn" data-policy-close>Close Window</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Pax Boxs Policies Modal Styles */
+  .paxbox-policy-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .paxbox-policy-modal.is-open {
+    display: flex;
+    opacity: 1;
+  }
+
+  .paxbox-policy-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(3, 7, 18, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .paxbox-policy-dialog {
+    position: relative;
+    background: #070d1e;
+    border: 1px solid rgba(0, 69, 255, 0.35);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 69, 255, 0.2);
+    border-radius: 18px;
+    width: 100%;
+    max-width: 820px;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(20px) scale(0.98);
+    transition: transform 0.25s ease;
+    z-index: 10;
+  }
+
+  .paxbox-policy-modal.is-open .paxbox-policy-dialog {
+    transform: translateY(0) scale(1);
+  }
+
+  .paxbox-policy-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 28px 16px 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .paxbox-policy-title-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .paxbox-policy-badge {
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #0045ff;
+  }
+
+  .paxbox-policy-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .paxbox-policy-close {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .paxbox-policy-close:hover {
+    background: rgba(0, 69, 255, 0.2);
+    border-color: #0045ff;
+    color: #ffffff;
+    transform: rotate(90deg);
+  }
+
+  /* Policy Tabs */
+  .paxbox-policy-tabs {
+    display: flex;
+    gap: 8px;
+    padding: 12px 28px;
+    background: rgba(3, 7, 18, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .paxbox-policy-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .paxbox-policy-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+
+  .paxbox-policy-tab:hover {
+    color: #ffffff;
+    border-color: rgba(0, 69, 255, 0.5);
+    background: rgba(0, 69, 255, 0.1);
+  }
+
+  .paxbox-policy-tab.active {
+    background: #0045ff !important;
+    border-color: #0045ff !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 16px rgba(0, 69, 255, 0.4);
+  }
+
+  /* Policy Body */
+  .paxbox-policy-body {
+    padding: 24px 28px;
+    overflow-y: auto;
+    flex: 1;
+    color: #cbd5e1;
+    font-size: 14.5px;
+    line-height: 1.65;
+  }
+
+  .paxbox-policy-pane {
+    display: none;
+    animation: policyFadeIn 0.25s ease forwards;
+  }
+
+  .paxbox-policy-pane.active {
+    display: block;
+  }
+
+  @keyframes policyFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .policy-hero-banner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: linear-gradient(135deg, rgba(0, 69, 255, 0.18) 0%, rgba(3, 7, 24, 0.6) 100%);
+    border: 1px solid rgba(0, 69, 255, 0.35);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+  }
+
+  .policy-hero-banner .hero-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+  }
+
+  .policy-hero-banner h3 {
+    font-size: 17px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 4px 0;
+  }
+
+  .policy-hero-banner p {
+    font-size: 13.5px;
+    color: #94a3b8;
+    margin: 0;
+  }
+
+  .paxbox-policy-body h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 20px 0 8px 0;
+  }
+
+  .paxbox-policy-body p {
+    margin: 0 0 14px 0;
+  }
+
+  .paxbox-policy-body ul {
+    margin: 0 0 16px 0;
+    padding-left: 22px;
+  }
+
+  .paxbox-policy-body li {
+    margin-bottom: 6px;
+  }
+
+  .paxbox-policy-body a {
+    color: #60a5fa;
+    text-decoration: underline;
+  }
+
+  .paxbox-policy-body a:hover {
+    color: #93c5fd;
+  }
+
+  /* Policy Footer */
+  .paxbox-policy-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(3, 7, 18, 0.6);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .paxbox-policy-footnote {
+    font-size: 12.5px;
+    color: #64748b;
+  }
+
+  .paxbox-policy-footnote a {
+    color: #94a3b8;
+    text-decoration: underline;
+  }
+
+  .paxbox-policy-btn {
+    background: #0045ff;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 22px;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+  }
+
+  .paxbox-policy-btn:hover {
+    background: #0036cc;
+    transform: scale(1.02);
+  }
+
+  @media screen and (max-width: 640px) {
+    .paxbox-policy-dialog {
+      max-height: 94vh;
+    }
+    .paxbox-policy-header,
+    .paxbox-policy-body,
+    .paxbox-policy-footer {
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+    .paxbox-policy-tabs {
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+    .paxbox-policy-footer {
+      flex-direction: column;
+      align-items: stretch;
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    function initPaxBoxPolicyModal() {
+      const modal = document.getElementById('paxbox-policy-modal');
+      if (!modal) return;
+
+      const tabs = modal.querySelectorAll('.paxbox-policy-tab');
+      const panes = modal.querySelectorAll('.paxbox-policy-pane');
+      const closeButtons = modal.querySelectorAll('[data-policy-close]');
+
+      function switchTab(tabKey) {
+        tabs.forEach(tab => {
+          const isActive = tab.getAttribute('data-tab') === tabKey;
+          tab.classList.toggle('active', isActive);
+          tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        panes.forEach(pane => {
+          const isActive = pane.id === 'pane-' + tabKey;
+          pane.classList.toggle('active', isActive);
+        });
+      }
+
+      function openModal(tabKey) {
+        if (tabKey) switchTab(tabKey);
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      // Tab click events
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = this.getAttribute('data-tab');
+          switchTab(target);
+        });
+      });
+
+      // Close handlers
+      closeButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          closeModal();
+        });
+      });
+
+      // ESC key to close
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+          closeModal();
+        }
+      });
+
+      // Global link interceptor for policies
+      document.addEventListener('click', function(e) {
+        const trigger = e.target.closest('[data-policy-trigger]');
+        if (trigger) {
+          e.preventDefault();
+          const policyKey = trigger.getAttribute('data-policy-trigger');
+          openModal(policyKey);
+          return;
+        }
+
+        const link = e.target.closest('a');
+        if (!link) return;
+
+        const href = link.getAttribute('href') || '';
+        if (href.includes('/policies/shipping-policy') || href === '#policy-shipping') {
+          e.preventDefault();
+          openModal('shipping');
+        } else if (href.includes('/policies/refund-policy') || href === '#policy-refund') {
+          e.preventDefault();
+          openModal('refund');
+        } else if (href.includes('/policies/terms-of-service') || href === '#policy-terms') {
+          e.preventDefault();
+          openModal('terms');
+        } else if (href === '#policy-privacy') {
+          e.preventDefault();
+          openModal('privacy');
+        }
+      });
+
+      // Check URL Hash on initial page load
+      const hash = window.location.hash;
+      if (hash === '#policy-shipping' || hash === '#shipping-policy') {
+        openModal('shipping');
+      } else if (hash === '#policy-refund' || hash === '#refund-policy') {
+        openModal('refund');
+      } else if (hash === '#policy-terms' || hash === '#terms-of-service') {
+        openModal('terms');
+      } else if (hash === '#policy-privacy' || hash === '#privacy-policy') {
+        openModal('privacy');
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPaxBoxPolicyModal);
+    } else {
+      initPaxBoxPolicyModal();
+    }
+  })();
+</script>

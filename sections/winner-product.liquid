@@ -1,0 +1,602 @@
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .winner-product-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 890px) {
+    .winner-product-wrapper {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  .winner-product__media-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* 1:1 Aspect Ratio */
+    border-radius: {{ section.settings.image_radius }}px;
+    overflow: hidden;
+    background: #000000;
+  }
+
+  .winner-product__media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .winner-product__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .winner-product__media-container:hover .winner-product__media img {
+    transform: scale(1.02);
+  }
+
+  .winner-product__info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .winner-product__rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .winner-product__title {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #111827;
+  }
+
+  .winner-product__title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .winner-product__title {
+      font-size: 22px;
+    }
+  }
+
+  .winner-product__stars {
+    color: #0045ff;
+    letter-spacing: 2px;
+    font-size: 16px;
+  }
+
+  .winner-product__reviews-count {
+    color: #0045ff;
+    font-weight: 600;
+  }
+
+  .winner-product__live-view {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #111827;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .winner-product__pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #0045ff;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 0 0 rgba(0, 69, 255, 0.7);
+    animation: pulse-dot 1.8s infinite;
+  }
+
+  @keyframes pulse-dot {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(0, 69, 255, 0.7);
+    }
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 6px rgba(0, 69, 255, 0);
+    }
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(0, 69, 255, 0);
+    }
+  }
+
+  .winner-product__price-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .winner-product__compare-price {
+    color: #0045ff;
+    text-decoration: line-through;
+    font-size: 19px;
+    font-weight: 700;
+  }
+
+  .winner-product__sale-price {
+    font-size: 22px;
+    font-weight: 800;
+    color: #111827;
+  }
+
+  .winner-product__save-badge {
+    background-color: #0045ff;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .winner-product__shipping-note {
+    font-size: 13px;
+    color: #4b5563;
+    margin: -6px 0 0 0;
+  }
+
+  .winner-product__shipping-note a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  .winner-product__installments {
+    font-size: 14px;
+    color: #1f2937;
+    margin: -4px 0 0 0;
+  }
+
+  .winner-product__shop-logo {
+    color: #5a31f4;
+    font-weight: 800;
+  }
+
+  .winner-product__buttons-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .winner-product__buttons-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  @media screen and (max-width: 500px) {
+    .winner-product__buttons-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .winner-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.2s ease, transform 0.1s ease;
+  }
+
+  .winner-btn:hover {
+    opacity: 0.92;
+  }
+
+  .winner-btn--buy {
+    background-color: #0045ff;
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(0, 69, 255, 0.35);
+  }
+
+  .winner-btn--shop {
+    background-color: #5a31f4;
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(90, 49, 244, 0.35);
+  }
+
+  .winner-product__more-payment {
+    text-align: center;
+    font-size: 12px;
+    color: #4b5563;
+    text-decoration: underline;
+    margin: 0;
+  }
+
+  .winner-product__benefits {
+    list-style: none;
+    padding: 0;
+    margin: 6px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .winner-product__benefit-item {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111827;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1.4;
+  }
+
+  .winner-product__bullet {
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .winner-product__guarantee {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #374151;
+    font-weight: 500;
+    margin-top: 2px;
+  }
+
+  .winner-product__guarantee-icon {
+    font-size: 16px;
+  }
+
+  .winner-product__details-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #111827;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 4px;
+  }
+
+  .winner-product__details-link:hover {
+    text-decoration: underline;
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign product = section.settings.product
+  assign title = section.settings.title
+  if title == blank and product != blank
+    assign title = product.title
+  endif
+  if title == blank
+    assign title = 'Anti-Snoring Red Light Therapy Nasal Device'
+  endif
+
+  assign price = section.settings.price
+  if price == blank and product != blank
+    assign price = product.price | money
+  endif
+  if price == blank
+    assign price = '$23.68'
+  endif
+
+  assign compare_at_price = section.settings.compare_at_price
+  if compare_at_price == blank and product != blank and product.compare_at_price > product.price
+    assign compare_at_price = product.compare_at_price | money
+  endif
+  if compare_at_price == blank
+    assign compare_at_price = '$47.53'
+  endif
+
+  assign winner_prod = section.settings.product | default: all_products['grabora-eye-red-light-therapy-glasses'] | default: collections.all.products.first
+  assign variant_id = winner_prod.selected_or_first_available_variant.id
+
+  assign product_link = section.settings.link
+  if product_link == blank and product != blank
+    assign product_link = product.url
+  endif
+  if product_link == blank and winner_prod != blank
+    assign product_link = winner_prod.url
+  endif
+  if product_link == blank
+    assign product_link = '/products/grabora-eye-red-light-therapy-glasses'
+  endif
+
+  assign image_asset = section.settings.image_asset
+  assign custom_image = section.settings.image
+-%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="winner-product-wrapper">
+      
+      <!-- Product Media -->
+      <div class="winner-product__media-container">
+        <a href="{{ product_link }}" class="winner-product__media" style="display: block; text-decoration: none;">
+          {%- if winner_prod.featured_image != blank -%}
+            <img
+              src="{{ winner_prod.featured_image | image_url: width: 800 }}"
+              alt="{{ title | escape }}"
+              loading="lazy"
+              width="{{ winner_prod.featured_image.width }}"
+              height="{{ winner_prod.featured_image.height }}"
+            >
+          {%- elsif custom_image != blank -%}
+            <img
+              src="{{ custom_image | image_url: width: 800 }}"
+              alt="{{ title | escape }}"
+              loading="lazy"
+              width="{{ custom_image.width }}"
+              height="{{ custom_image.height }}"
+            >
+          {%- elsif image_asset != blank -%}
+            <img
+              src="{{ image_asset | asset_url }}"
+              alt="{{ title | escape }}"
+              loading="lazy"
+              width="800"
+              height="800"
+            >
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </a>
+      </div>
+
+      <!-- Product Information -->
+      <div class="winner-product__info">
+
+        <h2 class="winner-product__title">
+          <a href="{{ product_link }}">{{ title | escape }}</a>
+        </h2>
+
+        <!-- Rating -->
+        <div class="winner-product__rating">
+          <span class="winner-product__stars">★★★★★</span>
+          <span class="winner-product__reviews-count">{{ section.settings.rating_text | default: '4.8 – 1356 Reviews' }}</span>
+        </div>
+
+        <!-- Live View Social Proof -->
+        <div class="winner-product__live-view">
+          <span class="winner-product__pulse-dot"></span>
+          <span>{{ section.settings.live_view_text | default: 'PEOPLE ARE LOOKING AT THIS!' }}</span>
+        </div>
+
+        <!-- Price and Badge -->
+        <div class="winner-product__price-row">
+          {%- if compare_at_price != blank -%}
+            <span class="winner-product__compare-price">{{ compare_at_price }}</span>
+          {%- endif -%}
+          <span class="winner-product__sale-price">{{ price }}</span>
+          {%- if section.settings.save_badge_text != blank -%}
+            <span class="winner-product__save-badge">{{ section.settings.save_badge_text }}</span>
+          {%- endif -%}
+        </div>
+
+        <!-- Installments -->
+        <p class="winner-product__installments">
+          Pay over time for orders over $35.00 with <span class="winner-product__shop-logo">shop</span> ⓘ
+        </p>
+
+        <!-- Action Buttons -->
+        <div class="winner-product__buttons-group">
+          {%- if variant_id != blank -%}
+            <form method="post" action="/cart/add" class="winner-product__form" style="margin: 0;">
+              <input type="hidden" name="id" value="{{ variant_id }}">
+              <input type="hidden" name="return_to" value="/checkout">
+              <div class="winner-product__buttons-row">
+                <button type="submit" class="winner-btn winner-btn--buy">
+                  Buy Now
+                </button>
+                <button type="submit" class="winner-btn winner-btn--shop">
+                  Buy with <span style="font-weight: 800; margin-left: 4px;">shop</span>
+                </button>
+              </div>
+            </form>
+          {%- else -%}
+            <div class="winner-product__buttons-row">
+              <a href="{{ product_link }}" class="winner-btn winner-btn--buy">
+                Buy Now
+              </a>
+              <a href="{{ product_link }}" class="winner-btn winner-btn--shop">
+                Buy with <span style="font-weight: 800; margin-left: 4px;">shop</span>
+              </a>
+            </div>
+          {%- endif -%}
+          <a href="{{ product_link }}" class="winner-product__more-payment">
+            More payment options
+          </a>
+        </div>
+
+        <!-- Key Benefits -->
+        <ul class="winner-product__benefits" role="list">
+          <li class="winner-product__benefit-item">
+            <span class="winner-product__bullet">•</span>
+            <span>Supports Clearer Breathing</span>
+          </li>
+          <li class="winner-product__benefit-item">
+            <span class="winner-product__bullet">•</span>
+            <span>Helps Relieve Sinus Pressure</span>
+          </li>
+          <li class="winner-product__benefit-item">
+            <span class="winner-product__bullet">•</span>
+            <span>Promotes Better Sleep Quality</span>
+          </li>
+          <li class="winner-product__benefit-item">
+            <span class="winner-product__bullet">•</span>
+            <span>Drug-Free Daily Wellness Support</span>
+          </li>
+          <li class="winner-product__benefit-item">
+            <span class="winner-product__bullet">•</span>
+            <span>Improves Comfort & Focus Throughout the Day</span>
+          </li>
+        </ul>
+
+        <!-- Satisfaction Guarantee -->
+        <div class="winner-product__guarantee">
+          <span class="winner-product__guarantee-icon">↺</span>
+          <span>100% Satisfaction Guaranteed</span>
+        </div>
+
+        <!-- Details Link -->
+        <a href="{{ product_link }}" class="winner-product__details-link">
+          View full details <span>→</span>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Winner Product Feature",
+  "tag": "section",
+  "class": "section section-winner-product",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "image_asset",
+      "label": "Image Asset Filename (e.g. winner_product.jpg)",
+      "default": "winner_product.jpg"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Custom Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Product Title (Optional override)"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating Text",
+      "default": "4.8 – 1356 Reviews"
+    },
+    {
+      "type": "text",
+      "id": "live_view_text",
+      "label": "Social Proof Text",
+      "default": "PEOPLE ARE LOOKING AT THIS!"
+    },
+    {
+      "type": "text",
+      "id": "price",
+      "label": "Sale Price",
+      "default": "$23.68"
+    },
+    {
+      "type": "text",
+      "id": "compare_at_price",
+      "label": "Compare at Price",
+      "default": "$47.53"
+    },
+    {
+      "type": "text",
+      "id": "save_badge_text",
+      "label": "Badge Text",
+      "default": "✦ SAVE 50%"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Product Link"
+    },
+    {
+      "type": "url",
+      "id": "shipping_policy_url",
+      "label": "Shipping Policy URL"
+    },
+    {
+      "type": "range",
+      "id": "image_radius",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "default": 16,
+      "unit": "px",
+      "label": "Image Corner Radius"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "Winner Product Feature"
+    }
+  ]
+}
+{% endschema %}

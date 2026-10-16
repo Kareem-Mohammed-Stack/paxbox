@@ -1,0 +1,122 @@
+{% comment %}
+  Renders social icons.
+  Accepts:
+  - class: {String} optional class on the <ul>
+  - facebook_link: {String} optional Facebook URL override
+  - instagram_link: {String} optional Instagram URL override
+  - always_show_facebook_instagram: {Boolean} show FB/IG even when URLs are empty
+
+  Usage:
+  {% render 'social-icons', class: 'footer__list-social', always_show_facebook_instagram: true %}
+{% endcomment %}
+
+{%- liquid
+  assign facebook_url = facebook_link | default: settings.social_facebook_link
+  assign instagram_url = instagram_link | default: settings.social_instagram_link
+  assign show_facebook = false
+  assign show_instagram = false
+
+  if always_show_facebook_instagram or facebook_url != blank
+    assign show_facebook = true
+  endif
+  if always_show_facebook_instagram or instagram_url != blank
+    assign show_instagram = true
+  endif
+-%}
+
+<ul class="list-unstyled list-social{% if class %} {{ class }}{% endif %}" role="list">
+  {%- if show_facebook -%}
+    <li class="list-social__item">
+      <a
+        href="{{ facebook_url | default: '#' }}"
+        class="link list-social__link{% if facebook_url == blank %} list-social__link--unset{% endif %}"
+        {% if facebook_url != blank %}
+          target="_blank"
+          rel="noopener noreferrer"
+        {% endif %}
+        {% if facebook_url == blank %}
+          aria-disabled="true"
+          title="Add your Facebook URL in Theme settings → Social media"
+        {% endif %}
+      >
+        {%- render 'icon-facebook' -%}
+        <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if show_instagram -%}
+    <li class="list-social__item">
+      <a
+        href="{{ instagram_url | default: '#' }}"
+        class="link list-social__link{% if instagram_url == blank %} list-social__link--unset{% endif %}"
+        {% if instagram_url != blank %}
+          target="_blank"
+          rel="noopener noreferrer"
+        {% endif %}
+        {% if instagram_url == blank %}
+          aria-disabled="true"
+          title="Add your Instagram URL in Theme settings → Social media"
+        {% endif %}
+      >
+        {%- render 'icon-instagram' -%}
+        <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_youtube_link != blank -%}
+    <li class="list-social__item">
+      <a href="{{ settings.social_youtube_link }}" class="link list-social__link" target="_blank" rel="noopener noreferrer">
+        {%- render 'icon-youtube' -%}
+        <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_tiktok_link != blank -%}
+    <li class="list-social__item">
+      <a href="{{ settings.social_tiktok_link }}" class="link list-social__link" target="_blank" rel="noopener noreferrer">
+        {%- render 'icon-tiktok' -%}
+        <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_twitter_link != blank -%}
+    <li class="list-social__item">
+      <a href="{{ settings.social_twitter_link }}" class="link list-social__link" target="_blank" rel="noopener noreferrer">
+        {%- render 'icon-twitter' -%}
+        <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_pinterest_link != blank -%}
+    <li class="list-social__item">
+      <a href="{{ settings.social_pinterest_link }}" class="link list-social__link" target="_blank" rel="noopener noreferrer">
+        {%- render 'icon-pinterest' -%}
+        <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_snapchat_link != blank -%}
+    <li class="list-social__item">
+      <a href="{{ settings.social_snapchat_link }}" class="link list-social__link" target="_blank" rel="noopener noreferrer">
+        {%- render 'icon-snapchat' -%}
+        <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_tumblr_link != blank -%}
+    <li class="list-social__item">
+      <a href="{{ settings.social_tumblr_link }}" class="link list-social__link" target="_blank" rel="noopener noreferrer">
+        {%- render 'icon-tumblr' -%}
+        <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if settings.social_vimeo_link != blank -%}
+    <li class="list-social__item">
+      <a href="{{ settings.social_vimeo_link }}" class="link list-social__link" target="_blank" rel="noopener noreferrer">
+        {%- render 'icon-vimeo' -%}
+        <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
+</ul>

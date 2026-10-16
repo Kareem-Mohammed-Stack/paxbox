@@ -1,0 +1,449 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .testimonials-section-{{ section.id }} {
+    background-color: #020614;
+    background-image: 
+      radial-gradient(ellipse 80% 50% at 50% -12%, rgba(0, 69, 255, 0.45) 0%, rgba(0, 69, 255, 0.12) 50%, transparent 80%),
+      radial-gradient(circle 450px at 8% 80%, rgba(0, 69, 255, 0.22) 0%, transparent 70%),
+      radial-gradient(circle 420px at 92% 25%, rgba(0, 85, 255, 0.18) 0%, transparent 70%),
+      linear-gradient(180deg, #020614 0%, #050c26 40%, #071235 70%, #020614 100%);
+    color: #ffffff;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .testimonials-ambient-light {
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(800px, 92vw);
+    height: 260px;
+    background: radial-gradient(ellipse at center, rgba(0, 69, 255, 0.42) 0%, rgba(0, 69, 255, 0.1) 50%, transparent 75%);
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .testimonials-header-{{ section.id }} {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 48px auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .testimonials-badge-{{ section.id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 69, 255, 0.18);
+    border: 1px solid rgba(0, 69, 255, 0.5);
+    padding: 7px 18px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #93c5fd;
+    margin-bottom: 20px;
+    box-shadow: 0 0 24px rgba(0, 69, 255, 0.25);
+  }
+
+  .testimonials-badge__dot {
+    width: 6px;
+    height: 6px;
+    background: #0045ff;
+    box-shadow: 0 0 8px rgba(0, 69, 255, 0.9);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .testimonials-title-{{ section.id }} {
+    font-size: 38px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 24px rgba(0, 69, 255, 0.35);
+  }
+
+  @media screen and (max-width: 749px) {
+    .testimonials-title-{{ section.id }} {
+      font-size: 28px;
+    }
+  }
+
+  .testimonials-subtitle-{{ section.id }} {
+    font-size: 15px;
+    color: #94a3b8;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Marquee Track Container */
+  .testimonials-marquee-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 10px 0;
+    z-index: 2;
+  }
+
+  .testimonials-marquee-wrapper:hover .testimonials-marquee-track {
+    animation-play-state: paused;
+  }
+
+  /* Left & Right gradient fade overlay */
+  .testimonials-marquee-wrapper::before,
+  .testimonials-marquee-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .testimonials-marquee-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, #020614 0%, rgba(2, 6, 20, 0.85) 45%, transparent 100%);
+  }
+
+  .testimonials-marquee-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, #020614 0%, rgba(2, 6, 20, 0.85) 45%, transparent 100%);
+  }
+
+  .testimonials-marquee-row {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .testimonials-marquee-track {
+    display: flex;
+    gap: 20px;
+    flex-shrink: 0;
+    animation: marquee-scroll 45s linear infinite;
+  }
+
+  .testimonials-marquee-track--reverse {
+    animation: marquee-scroll-reverse 45s linear infinite;
+  }
+
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes marquee-scroll-reverse {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  /* Testimonial Card */
+  .testimonial-card {
+    width: 360px;
+    flex-shrink: 0;
+    background: rgba(8, 16, 38, 0.72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 69, 255, 0.22);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+    background: rgba(13, 25, 58, 0.9);
+    border-color: rgba(0, 69, 255, 0.75);
+    box-shadow: 0 16px 40px rgba(0, 69, 255, 0.28), 0 0 24px rgba(0, 69, 255, 0.2);
+  }
+
+  .testimonial-card__stars {
+    color: #f59e0b;
+    font-size: 16px;
+    letter-spacing: 2px;
+    margin-bottom: -4px;
+  }
+
+  .testimonial-card__text {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: #cbd5e1;
+    margin: 0;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .testimonial-card__author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  .testimonial-card__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    color: #ffffff;
+    flex-shrink: 0;
+    text-transform: uppercase;
+  }
+
+  .testimonial-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .testimonial-card__name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .testimonial-card__badge {
+    font-size: 12px;
+    color: #64748b;
+    margin: 0;
+  }
+{%- endstyle -%}
+
+<div id="testimonials-section" class="testimonials-section-{{ section.id }} section-{{ section.id }}-padding">
+  <div class="testimonials-ambient-light"></div>
+  <div class="testimonials-header-{{ section.id }}">
+    {%- if section.settings.badge_text != blank -%}
+      <div class="testimonials-badge-{{ section.id }}">
+        <span class="testimonials-badge__dot"></span>
+        <span>✦ {{ section.settings.badge_text }}</span>
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.title != blank -%}
+      <h2 class="testimonials-title-{{ section.id }}">
+        {{ section.settings.title }}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.settings.subtitle != blank -%}
+      <p class="testimonials-subtitle-{{ section.id }}">
+        {{ section.settings.subtitle }}
+      </p>
+    {%- endif -%}
+  </div>
+
+  <div class="testimonials-marquee-wrapper">
+    <!-- Row 1: Left to Right -->
+    <div class="testimonials-marquee-row">
+      <div class="testimonials-marquee-track">
+        {%- for i in (1..2) -%}
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars">★★★★★</div>
+            <p class="testimonial-card__text">"The kids' stuff was a hit, and checkout was painless. Already ordered again."</p>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar" style="background-color: #0284c7;">DK</div>
+              <div class="testimonial-card__info">
+                <p class="testimonial-card__name">Daniel K.</p>
+                <p class="testimonial-card__badge">Verified buyer</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars">★★★★★</div>
+            <p class="testimonial-card__text">"Good prices, and the 14-day returns made me comfortable trying something new."</p>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar" style="background-color: #0d9488;">PS</div>
+              <div class="testimonial-card__info">
+                <p class="testimonial-card__name">Priya S.</p>
+                <p class="testimonial-card__badge">Verified buyer</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars">★★★★★</div>
+            <p class="testimonial-card__text">"Exactly the kind of trending find I keep seeing — except here it was in stock and shipped fast."</p>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar" style="background-color: #ea580c;">JR</div>
+              <div class="testimonial-card__info">
+                <p class="testimonial-card__name">James R.</p>
+                <p class="testimonial-card__badge">Verified buyer</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars">★★★★★</div>
+            <p class="testimonial-card__text">"Arrived fast and actually works as described. Finally an online store that isn't just another random ad."</p>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar" style="background-color: #7c3aed;">ML</div>
+              <div class="testimonial-card__info">
+                <p class="testimonial-card__name">Maya L.</p>
+                <p class="testimonial-card__badge">Verified buyer</p>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <!-- Row 2: Right to Left (Reverse) -->
+    <div class="testimonials-marquee-row">
+      <div class="testimonials-marquee-track testimonials-marquee-track--reverse">
+        {%- for i in (1..2) -%}
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars">★★★★★</div>
+            <p class="testimonial-card__text">"The pet plug actually quieted our evenings. I'll be back for the rest of the house."</p>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar" style="background-color: #2563eb;">SR</div>
+              <div class="testimonial-card__info">
+                <p class="testimonial-card__name">Sofia R.</p>
+                <p class="testimonial-card__badge">Verified buyer</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars">★★★★★</div>
+            <p class="testimonial-card__text">"Clean checkout, honest prices, and it showed up when they said it would. That's rare lately."</p>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar" style="background-color: #0891b2;">BW</div>
+              <div class="testimonial-card__info">
+                <p class="testimonial-card__name">Ben W.</p>
+                <p class="testimonial-card__badge">Verified buyer</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars">★★★★★</div>
+            <p class="testimonial-card__text">"Bought it as a gift. It arrived fast and looked even better than the photos."</p>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar" style="background-color: #f97316;">AM</div>
+              <div class="testimonial-card__info">
+                <p class="testimonial-card__name">Aisha M.</p>
+                <p class="testimonial-card__badge">Verified buyer</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-card__stars">★★★★★</div>
+            <p class="testimonial-card__text">"The NÕX sinus relief works wonders from day one. I can breathe easily and sleep through the night without congestion."</p>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar" style="background-color: #9333ea;">MK</div>
+              <div class="testimonial-card__info">
+                <p class="testimonial-card__name">Marcus K.</p>
+                <p class="testimonial-card__badge">Verified buyer</p>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Testimonials Marquee",
+  "tag": "section",
+  "class": "section section-testimonials-marquee",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "default": "VERIFIED REVIEWS",
+      "label": "Badge Text"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Loved by shoppers worldwide",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "default": "Real orders. Real results. The reason people come back.",
+      "label": "Subtitle"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#090f1f"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 64
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials Marquee"
+    }
+  ]
+}
+{% endschema %}

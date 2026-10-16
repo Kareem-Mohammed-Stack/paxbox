@@ -1,0 +1,335 @@
+{{ 'component-accordion.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .faq-container {
+    max-width: {{ section.settings.content_width }}px;
+    margin: 0 auto;
+  }
+
+  .faq-header {
+    text-align: {{ section.settings.heading_alignment }};
+    margin-bottom: 36px;
+  }
+
+  .faq-header__title {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 0 0 8px 0;
+    color: rgb(var(--color-foreground));
+    line-height: 1.2;
+  }
+
+  .faq-header__subtitle {
+    font-size: 15px;
+    color: #6b7280;
+    margin: 0;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .faq-item {
+    background: #ffffff;
+    border: 1px solid #eaedf5;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .faq-item:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  }
+
+  .faq-item details summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    transition: color 0.2s ease;
+  }
+
+  .faq-item details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item details summary:hover {
+    color: #1e50ff;
+  }
+
+  .faq-item details[open] summary {
+    border-bottom: 1px solid #f1f5f9;
+    color: #1e50ff;
+  }
+
+  .faq-item__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    color: #111827;
+    font-size: 18px;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-left: 12px;
+    transition: transform 0.25s ease, background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .faq-item details summary:hover .faq-item__icon {
+    background: #eef4ff;
+    color: #0045ff;
+  }
+
+  .faq-item details[open] .faq-item__icon {
+    transform: rotate(45deg);
+    background: #0045ff;
+    color: #ffffff;
+  }
+
+  .faq-item__content {
+    padding: 20px 24px;
+    font-size: 15px;
+    color: #4b5563;
+    line-height: 1.6;
+    background: #fafbfc;
+  }
+
+  .faq-item__content p {
+    margin: 0 0 10px 0;
+  }
+
+  .faq-item__content p:last-child {
+    margin-bottom: 0;
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="faq-container">
+      {%- if section.settings.title != blank -%}
+        <div class="faq-header">
+          <h2 class="faq-header__title {{ section.settings.heading_size }}">
+            {{ section.settings.title }}
+          </h2>
+          {%- if section.settings.subtitle != blank -%}
+            <p class="faq-header__subtitle">{{ section.settings.subtitle }}</p>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <ul class="faq-list" role="list">
+        {%- for block in section.blocks -%}
+          <li class="faq-item" {{ block.shopify_attributes }}>
+            <details {% if forloop.first and section.settings.open_first %}open{% endif %}>
+              <summary>
+                <span>{{ block.settings.question }}</span>
+                <span class="faq-item__icon" aria-hidden="true">+</span>
+              </summary>
+              <div class="faq-item__content rte">
+                {{ block.settings.answer }}
+              </div>
+            </details>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FAQ Accordion",
+  "tag": "section",
+  "class": "section section-faq",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Frequently Asked Questions",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "default": "Have questions? Everything you need to know about our products & service.",
+      "label": "Subtitle"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Heading Alignment"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "Small"
+        },
+        {
+          "value": "h1",
+          "label": "Medium"
+        },
+        {
+          "value": "h0",
+          "label": "Large"
+        }
+      ],
+      "default": "h1",
+      "label": "Heading Size"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "min": 600,
+      "max": 1200,
+      "step": 20,
+      "default": 840,
+      "unit": "px",
+      "label": "Max Content Width"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first",
+      "default": true,
+      "label": "Open first question by default"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "default": "How long does shipping take?",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "default": "<p>Standard tracked shipping delivers within 3–5 business days.</p>",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Accordion",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "<p>Standard tracked shipping delivers within 3–5 business days directly to your doorstep.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I track my order?",
+            "answer": "<p>Once your order has shipped, you will receive an email confirmation with your unique tracking number and direct tracking link to follow your parcel in real-time.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return & refund policy?",
+            "answer": "<p>We offer a 14-day hassle-free return policy. If you are not completely satisfied with your purchase, contact our customer support team for an easy exchange or full refund.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are payments safe and secure?",
+            "answer": "<p>Yes, absolutely! We use bank-level 256-bit SSL encryption to ensure that all personal and payment information is 100% protected and secure.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I contact customer support?",
+            "answer": "<p>Our customer support team is available 24/7. You can reach out to us via our contact form or send us an email at <a href=\"mailto:Paxboxs.ramy@gmail.com\">Paxboxs.ramy@gmail.com</a>, and we will get back to you within 24 hours.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
